@@ -7,6 +7,7 @@ val composeVersion = "1.0.1"
 
 android {
     compileSdk = 31
+    flavorDimensions("api")
 
     defaultConfig {
         applicationId = "com.xinto.opencord"
@@ -52,6 +53,26 @@ android {
     packagingOptions {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
+
+    productFlavors {
+        create("discord") {
+            isDefault = true
+            dimension = "api"
+            applicationIdSuffix = ".discord"
+
+            buildConfigField("String", "API_URL", "https://discord.com")
+            buildConfigField("String", "CDN_URL", "https://cdn.discordapp.com")
+            buildConfigField("String", "GATEWAY_URL", "wss://gateway.discord.gg")
+        }
+        create("fosscord") {
+            dimension = "api"
+            applicationIdSuffix = ".fosscord"
+
+            buildConfigField("String", "API_URL", "https://dev.fosscord.com")
+            buildConfigField("String", "CDN_URL", "https://cdn.fosscord.com")
+            buildConfigField("String", "GATEWAY_URL", "wss://gateway.fosscord.com")
         }
     }
 }
