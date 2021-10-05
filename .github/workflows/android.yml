@@ -23,7 +23,7 @@ jobs:
           cache: 'gradle'
 
       - name: Build Debug APKs with Gradle
-        run: chmod +x ./gradlew && ./gradlew assembleDiscordDebug && ../gradlew assembleFosscordDebug
+        run: chmod +x ./gradlew && ./gradlew assembleDiscordDebug && ./gradlew assembleFosscordDebug
 
       - name: Upload apk as artifact
         uses: actions/upload-artifact@v2
